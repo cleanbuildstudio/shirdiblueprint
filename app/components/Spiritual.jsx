@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import { MaskedLineReveal } from './TextReveal';
 
 export default function Spiritual() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -53,11 +54,19 @@ export default function Spiritual() {
       {/* Top Header */}
       <div className="w-full mb-8 sm:mb-10 md:mb-14">
         <div className="flex flex-col md:flex-row items-start sm:items-end justify-between gap-6 md:gap-12">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white flex-1 indent-0 sm:indent-[8%]">
-            <span className="whitespace-normal sm:whitespace-nowrap">See the sanctuary</span>
-            <br />
-            <span className="whitespace-normal sm:whitespace-nowrap">before you arrive.</span>
-          </h2>
+          <div className="flex-1">
+            <MaskedLineReveal  
+              as="h2"
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-montserrat"
+              lineClassName={(idx) => (idx === 0 ? 'sm:pl-[8%]' : 'pl-0')}
+              lines={[
+                <span key="l1" className="whitespace-normal sm:whitespace-nowrap">See the sanctuary</span>,
+                <span key="l2" className="whitespace-normal sm:whitespace-nowrap">before you arrive.</span>
+              ]}
+              stagger={0.08}
+              duration={1.2}
+            />
+          </div>
         </div>
       </div>
 

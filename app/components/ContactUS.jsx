@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Instrument_Serif } from 'next/font/google';
+import { MaskedLineReveal, OpticalDrift } from './TextReveal';
 
 const instrumentSerif = Instrument_Serif({
   weight: '400',
@@ -54,16 +55,23 @@ export default function ContactUS() {
           ======================================================== */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-10">
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-[1.12]">
-                Initiate Your <br />
-                <span className={`${instrumentSerif.className} italic font-normal text-4xl sm:text-5xl md:text-6xl`}>
-                  Sanctuary Inquiry.
-                </span>
-              </h2>
+              <MaskedLineReveal
+                as="h2"
+                className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-[1.12]"
+                lines={[
+                  "Initiate Your",
+                  <span key="inquiry" className={`${instrumentSerif.className} italic font-normal text-4xl sm:text-5xl md:text-6xl`}>
+                    Sanctuary Inquiry.
+                  </span>
+                ]}
+                stagger={0.08}
+              />
 
-              <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed mt-6">
-                To explore parcel availability, land ownership, or our fully managed hospitality programme, please provide your details. Our private advisory team reviews each enquiry personally and connects within 24 hours.
-              </p>
+              <OpticalDrift delay={0.22}>
+                <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed mt-6">
+                  To explore parcel availability, land ownership, or our fully managed hospitality programme, please provide your details. Our private advisory team reviews each enquiry personally and connects within 24 hours.
+                </p>
+              </OpticalDrift>
             </div>
 
             {/* Architectural Visual Preview */}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { MaskedLineReveal, OpticalDrift, DigitRoll } from './TextReveal';
 
 export default function AboutOne() {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,26 +40,32 @@ export default function AboutOne() {
       {/* Main Content Grid: Headline (Left) & Narrative (Right) */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start my-auto">
         {/* Left Column: Heading */}
-        <div className="lg:col-span-7 space-y-2 sm:space-y-3">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white">
-            Not a hotel room.
-          </h2>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white">
-            Not a holiday apartment.
-          </h2>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white/95 pt-1">
-            Your own private villa in Shirdi.
-          </h2>
+        <div className="lg:col-span-7">
+          <MaskedLineReveal
+            as="h2"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white space-y-2 sm:space-y-3"
+            lines={[
+              "Not a hotel room.",
+              "Not a holiday apartment.",
+              "Your own private villa in Shirdi."
+            ]}
+            stagger={0.08}
+            duration={1.2}
+          />
         </div>
 
         {/* Right Column: Narrative Copy & Animated Button */}
         <div className="lg:col-span-5 flex flex-col gap-6 text-white/80 text-sm sm:text-base leading-relaxed font-light">
-          <p>
-            For generations, devotees have travelled across continents to Shirdi — checking into a hotel, occupying a temporary room, and eventually leaving.
-          </p>
-          <p>
-            What if, after darshan, you returned not to a commercial suite, but to your own home — surrounded by gardens, water, silence and nature?
-          </p>
+          <OpticalDrift delay={0.15}>
+            <p>
+              For generations, devotees have travelled across continents to Shirdi — checking into a hotel, occupying a temporary room, and eventually leaving.
+            </p>
+          </OpticalDrift>
+          <OpticalDrift delay={0.25}>
+            <p>
+              What if, after darshan, you returned not to a commercial suite, but to your own home — surrounded by gardens, water, silence and nature?
+            </p>
+          </OpticalDrift>
 
           {/* Monolog-Style Animated Button */}
           <div className="pt-4">
@@ -160,14 +167,22 @@ export default function AboutOne() {
                 />
               )}
 
-              {/* 3. Stat Content Reveal (Graceful Fade-In at delay-700) */}
+              {/* 3. Stat Content Reveal (Architectural Masked Digit Emergence) */}
               <div
-                className={`transition-all duration-700 ease-out delay-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+                className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.35,1)] delay-700 ${
+                  isVisible ? 'opacity-100' : 'opacity-0'
                 }`}
               >
-                <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white mb-2 sm:mb-3">
-                  {stat.value}
+                <div className="overflow-hidden mb-2 sm:mb-3">
+                  <div
+                    className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.35,1)]"
+                    style={{
+                      transform: isVisible ? 'translate3d(0, 0%, 0)' : 'translate3d(0, 115%, 0)',
+                      transitionDelay: `${700 + idx * 80}ms`
+                    }}
+                  >
+                    {stat.value}
+                  </div>
                 </div>
                 <div className="text-[10px] sm:text-xs font-montserrat uppercase tracking-[0.14em] sm:tracking-[0.2em] text-white/70">
                   {stat.label}

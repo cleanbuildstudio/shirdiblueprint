@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { MaskedLineReveal, OpticalDrift, DigitRoll } from './TextReveal';
 
 const menuItems = [
   { id: '01', label: 'Home to the eternal presence of Sai Baba',
@@ -80,14 +81,21 @@ export default function AboutThree() {
             
             {/* Top Heading */}
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.08] tracking-normal">
-                Where Spiritual Legacy, <br />
-                Meets Strategic Living.
-              </h2>
+              <MaskedLineReveal
+                as="h2"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.08] tracking-normal"
+                lines={[
+                  "Where Spiritual Legacy,",
+                  "Meets Strategic Living."
+                ]}
+                stagger={0.08}
+              />
 
-              <p className="text-[10px] sm:text-xs tracking-[0.05em] font-semibold uppercase text-white/80 mt-5 sm:mt-6 ">
-                Live. Invest. Belong.
-              </p>
+              <OpticalDrift delay={0.25}>
+                <p className="text-[10px] sm:text-xs tracking-[0.05em] font-semibold uppercase text-white/80 mt-5 sm:mt-6 ">
+                  Live. Invest. Belong.
+                </p>
+              </OpticalDrift>
             </div>
 
             {/* Horizontal Line Divider */}
@@ -95,23 +103,29 @@ export default function AboutThree() {
 
             {/* Narrative Story */}
             <div className="space-y-6">
-              <p className="text-white/70 text-sm sm:text-[15px] font-light indent-0 sm:indent-8">
-                In Shirdi, ancient devotion and modern opportunity walk hand in hand.
-                For professionals and investors seeking a life or venture rooted in meaning yet supported by infrastructure,
-                 Shirdi is emerging as one of India’s most unique lifestyle and growth destinations.
-                Welcome to the crown jewel of the city — command from its most valuable street — insulated by design,
-                 surrounded by commercial on all sides, yet hidden in plain sight.
-              </p>
+              <OpticalDrift delay={0.2}>
+                <p className="text-white/70 text-sm sm:text-[15px] font-light indent-0 sm:indent-8">
+                  In Shirdi, ancient devotion and modern opportunity walk hand in hand.
+                  For professionals and investors seeking a life or venture rooted in meaning yet supported by infrastructure,
+                  Shirdi is emerging as one of India’s most unique lifestyle and growth destinations.
+                  Welcome to the crown jewel of the city — command from its most valuable street — insulated by design,
+                  surrounded by commercial on all sides, yet hidden in plain sight.
+                </p>
+              </OpticalDrift>
 
-              <div className="text-xs sm:text-sm md:text-base font-light text-white leading-snug">
-                We’re at ease — our offerings speak for themselves.
-              </div>
+              <OpticalDrift delay={0.3}>
+                <div className="text-xs sm:text-sm md:text-base font-light text-white leading-snug">
+                  We’re at ease — our offerings speak for themselves.
+                </div>
+              </OpticalDrift>
 
-              <p className="text-white/70 text-sm sm:text-base font-light leading-relaxed max-w-xl">
-                Shirdi possesses one of India’s most enduring spiritual travel economies.
-                Its hospitality landscape is extensive—but overwhelmingly designed around conventional hotel rooms, commercial suites, lodges and short-stay accommodation.
-                Premium travellers already pay for comfort, convenience and proximity.
-              </p>
+              <OpticalDrift delay={0.35}>
+                <p className="text-white/70 text-sm sm:text-base font-light leading-relaxed max-w-xl">
+                  Shirdi possesses one of India’s most enduring spiritual travel economies.
+                  Its hospitality landscape is extensive—but overwhelmingly designed around conventional hotel rooms, commercial suites, lodges and short-stay accommodation.
+                  Premium travellers already pay for comfort, convenience and proximity.
+                </p>
+              </OpticalDrift>
             </div>
 
             
@@ -121,7 +135,9 @@ export default function AboutThree() {
               {stats.map((stat, idx) => (
                 <div key={idx} className={`${idx === 0 ? 'sm:pr-6' : idx === 1 ? 'sm:px-6' : 'sm:pl-6'} py-4 sm:py-0 first:pt-0 last:pb-0`}>
                   <div className="text-4xl sm:text-5xl font-serif font-black text-white tracking-tight">
-                    {stat.number}
+                    <DigitRoll delay={idx * 0.12}>
+                      {stat.number}
+                    </DigitRoll>
                     <span className='font-normal'> Cr</span>
                   </div>
                   

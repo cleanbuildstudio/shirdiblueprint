@@ -16,7 +16,11 @@ export default function Footer() {
   ];
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined' && window.lenis) {
+      window.lenis.scrollTo(0, { duration: 1.4 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -89,7 +93,7 @@ export default function Footer() {
                 href="#contact"
                 className="text-xs sm:text-sm text-white hover:text-white/70 underline underline-offset-4 py-2 tracking-wide transition-colors"
               >
-                inquiry@blueprintshirdi.com ↗
+                office@blueprintshirdi.com ↗
                 
               </a>
                <a

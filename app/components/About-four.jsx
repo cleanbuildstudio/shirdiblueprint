@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import {  Instrument_Serif } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
+import { MaskedLineReveal, OpticalDrift } from './TextReveal';
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -80,15 +81,21 @@ export default function EditorialScrollSection() {
                 <div className="lg:hidden text-[10px] tracking-[0.24em] uppercase text-white/50 mb-3 ">
                   (01 · OWNERSHIP)
                 </div>
-                <h2 className={`${instrumentSerif.className}  text-3xl scale-y-[1.2] sm:text-4xl  md:text-5xl lg:text-[3rem] font-normal text-white leading-[1.1] tracking-normal`}
-                   >
-                  You own the land beneath you. <br />
-                  You own a private villa upon it.
-                </h2>
+                <MaskedLineReveal
+                  as="h2"
+                  className={`${instrumentSerif.className} text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] font-normal text-white leading-[1.1] tracking-normal`}
+                  lines={[
+                    "You own the land beneath you.",
+                    "You own a private villa upon it."
+                  ]}
+                  stagger={0.08}
+                />
 
-                <p className="text-[11px] sm:text-xs tracking-[0.005em] uppercase text-white/70 mt-4 leading-relaxed">
-                  THIS IS PRIVATE OWNERSHIP WITH THE INTELLIGENCE OF HOSPITALITY.
-                </p>
+                <OpticalDrift delay={0.2}>
+                  <p className="text-[11px] sm:text-xs tracking-[0.005em] uppercase text-white/70 mt-4 leading-relaxed">
+                    THIS IS PRIVATE OWNERSHIP WITH THE INTELLIGENCE OF HOSPITALITY.
+                  </p>
+                </OpticalDrift>
               </div>
 
               <div className="w-full border-b border-white/15 my-7" />
@@ -169,12 +176,16 @@ export default function EditorialScrollSection() {
                 <div className="lg:hidden text-[10px] tracking-[0.24em] uppercase text-white/50 mb-3 ">
                   (02 · HOSPITALITY)
                 </div>
-                <p className="text-[11px] sm:text-xs tracking-[0.02em] uppercase text-white/70 mb-3">
-                  WHEN YOU ARE AWAY, IT MAY CONTINUE TO WORK.
-                </p>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white leading-[1.15]">
-                  The Smartest Asset.
-                </h2>
+                <OpticalDrift delay={0.1}>
+                  <p className="text-[11px] sm:text-xs tracking-[0.02em] uppercase text-white/70 mb-3">
+                    WHEN YOU ARE AWAY, IT MAY CONTINUE TO WORK.
+                  </p>
+                </OpticalDrift>
+                <MaskedLineReveal
+                  as="h2"
+                  className="text-3xl sm:text-4xl md:text-5xl font-normal text-white leading-[1.15]"
+                  lines={["The Smartest Asset."]}
+                />
               </div>
 
               <div className="w-full border-b border-white/15 my-6" />

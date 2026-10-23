@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Instrument_Serif } from 'next/font/google';
+import { MaskedLineReveal, OpticalDrift } from './TextReveal';
 
 const instrumentSerif = Instrument_Serif({
   weight: '400',
@@ -21,12 +22,20 @@ export default function Hero() {
           
           {/* Left: Text Block matching Image */}
           <div className="flex flex-col max-w-xl text-left">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.05] tracking-tight">
-              Your Villa. Your Land.
-            </h2>
-            <p className="text-xs sm:text-base font-normal text-white/80 mt-1 sm:mt-1.5 leading-relaxed">
+            <MaskedLineReveal
+              as="h2"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.05] tracking-tight"
+              lines={["Your Villa. Your Land."]}
+              delay={0.15}
+            />
+            <OpticalDrift
+              as="p"
+              className="text-xs sm:text-base font-normal text-white/80 mt-1 sm:mt-1.5 leading-relaxed"
+              delay={0.35}
+              yOffset={14}
+            >
               A limited private collection of Balinese villas in Shirdi Central.
-            </p>
+            </OpticalDrift>
           </div>
 
           {/* Right: Monolog-Style "REQUEST AN INVITATION" Animated Button */}
@@ -83,12 +92,12 @@ export default function Hero() {
         </div>
 
         {/* Giant Bottom Headline: "BLUEPRINT SHIRDI" (Figma Design Asset) */}
-        <div className="w-full flex justify-center p-6 sm:px-4 md:px-6 pointer-events-none select-none">
+        <div className="w-full flex justify-center p-6 sm:px-4 md:px-6 pointer-events-none select-none overflow-hidden">
           <h1 className="w-full flex justify-center items-end">
             <img
               src="/shirditext.png"
               alt="BLUEPRINT SHIRDI"
-              className="w-full max-w-full h-auto object-contain pointer-events-none select-none opacity-85 brightness-90 drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
+              className="w-full max-w-full h-auto object-contain pointer-events-none select-none opacity-85 brightness-90 drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.35,1)]"
               style={{ filter: 'brightness(0.88) contrast(0.96)' }}
             />
           </h1>

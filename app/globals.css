@@ -81,3 +81,83 @@ body, html {
   transform-origin: left;
   transform: scaleX(1);
 }
+
+/* =========================================================================
+   LENIS SMOOTH SCROLL STYLES
+   ========================================================================= */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* GPU anti-aliasing stabilization helper */
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* =========================================================================
+   MONOLOG / AWWWARDS CINEMATIC PAGE TRANSITION OVERLAY
+   ========================================================================= */
+#monologTransitionOverlay,
+.monolog-transition-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #080807;
+  z-index: 2147483647;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.35, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.35, 1);
+  will-change: opacity, visibility;
+}
+
+#monologTransitionOverlay.is-active,
+.monolog-transition-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#monologTransitionOverlay.is-entering,
+.monolog-transition-overlay.is-entering {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Monolog signature hairline progress indicator */
+.monolog-transition-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.35, 1);
+}
+
+#monologTransitionOverlay.is-active .monolog-transition-line {
+  transform: translateX(0%);
+}
+
+
+

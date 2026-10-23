@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Bebas_Neue } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "./components/SmoothScroll";
+import PageTransition from "./components/PageTransition";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -27,7 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${bebasNeue.variable}`}>
       <body className={`${montserrat.className} antialiased min-h-screen bg-black text-white`}>
-        {children}
+        <PageTransition />
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

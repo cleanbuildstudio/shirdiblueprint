@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { MaskedLineReveal, OpticalDrift } from './TextReveal';
 
 const projects = [
   {
@@ -59,13 +60,16 @@ export default function Projects() {
             </div>
 
             {/* Project Caption Line (Matching oharchitecture.com.au) */}
-            <div className="flex items-center justify-between pt-4 text-xs sm:text-sm font-mono tracking-wider text-white/90">
+            <div className="flex items-center justify-between pt-4 text-xs sm:text-sm font-mono tracking-wider text-white/90 overflow-hidden">
               <div className="flex items-center gap-3">
-                <span className="text-white/40">({item.id})</span>
-                <span className="font-semibold font-sans tracking-widest uppercase text-white group-hover:text-white/70 transition-colors">
+                <span className="text-white/40 font-mono">({item.id})</span>
+                <span className="font-semibold font-sans tracking-widest uppercase text-white group-hover:text-white/70 transition-colors duration-300">
                   {item.title}
                 </span>
               </div>
+              <span className="text-white/40 text-[11px] font-mono tracking-widest uppercase">
+                2026
+              </span>
             </div>
           </div>
         ))}
